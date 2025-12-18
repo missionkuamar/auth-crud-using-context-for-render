@@ -27,13 +27,21 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/items', itemRoutes);
 
-// Serve React frontend
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+  app.use(
+    express.static(
+      path.join(__dirname, 'backend', 'frontend', 'dist')
+    )
+  );
+
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.join(__dirname, 'backend', 'frontend', 'dist', 'index.html')
+    );
+  });
+}
 
 // Error handler
 app.use(errorHandler);
