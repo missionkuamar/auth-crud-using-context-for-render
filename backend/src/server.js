@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
-    ? 'https://mern-vite-app.onrender.com'
+    ? 'https://auth-crud-using-context-for-render.onrender.com'
     : 'http://localhost:5173',
   credentials: true,
 }));
