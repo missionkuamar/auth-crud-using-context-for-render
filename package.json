@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
      "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
-    "start": "node backend/sr/server.js",
+    "start": "node backend/src/server.js",
     "mission": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm run dev",
     "client": "cd frontend && npm run dev",
