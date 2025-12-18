@@ -4,15 +4,18 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+
+  // Build output for Render (correct, keep this ✅)
   build: {
     outDir: path.resolve(__dirname, '../backend/frontend/dist'),
     emptyOutDir: true,
   },
+
+  // Dev-only settings
   server: {
-    // port: 5173, // Vite default port (NOT 5000)
     proxy: {
       '/api': {
-        target: 'https://auth-crud-using-context-for-render.onrender.com/', // Backend port
+        target: 'http://localhost:5000',
         changeOrigin: true,
       },
     },
